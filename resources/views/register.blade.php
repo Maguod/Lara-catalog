@@ -17,12 +17,24 @@
             <div class="register-top heading">
                 <h2>REGISTER</h2>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger text-center" role="alert">{{$error}}</div>
+                    @endforeach
+                </div>
+            </div>
             <div class="register-main">
-                <form action="/register" method="post" class="form_reg">
+                @if(session('error_regisrt_user'))
+                    {{session('error_regisrt_user')}}
+                @endif
+                <form action="/user/register" method="post" class="form_reg">
+                    {{csrf_field()}}
                     <div class="col-md-10 offset-md-1 account-left">
-                        <input placeholder="Name" type="text" tabindex="1" name="name" required>
-                        <input placeholder="Email address" type="text" name="email" tabindex="3" required>
-                        <input placeholder="Password" type="text" name="password" tabindex="3" required>
+                        <input placeholder="Name" type="text" value="{{old('name')}}" name="name" >
+                        <input placeholder="Email address" type="text" name="email" value="{{old('email')}}" >
+                        <input placeholder="Password" type="text" name="password" value="{{old('password')}}"
+                               id="password">
                     </div>
                     <div class="address submit">
                         <input type="submit" value="Submit">

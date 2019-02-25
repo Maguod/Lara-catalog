@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Card;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers;
 
@@ -38,12 +39,13 @@ class HomeController extends Controller
     return view('single', ['cats' => $cats, 'card' => $card]);
   }
   
-  public function login()
+  public function loginForm()
   {
     return view('login');
   }
-  public function register()
+  public function registerForm()
   {
     return view('register');
   }
+
 }

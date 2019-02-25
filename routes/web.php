@@ -1,5 +1,5 @@
 <?php
-
+ use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +20,16 @@
 Route::get('/', 'HomeController@index');
 Route::get('/category/{id}', 'HomeController@category');
 Route::get('/single/{id}', 'HomeController@singleCard');
-Route::get('/login', 'HomeController@login');
-Route::get('/register', 'HomeController@register');
+Route::get('/login', 'HomeController@loginForm');
+
+Route::get('/register', 'HomeController@registerForm');
+
+Route::group(['prefix' => 'user', 'namespace' => 'user'], function() {
+  Route::post('/login', 'UserController@login');
+  Route::post('/register', 'UserController@register');
+  Route::get('/logout', 'UserController@logout');
+  Route::get('/deleteUser/{id}', 'UserController@deleteUser');
+  Route::get('/dashboard/{id}', 'UserController@dashboardUser');
+
+}) ;
+//Route::get('/user/deleteUser', 'user@remove');

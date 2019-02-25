@@ -1,13 +1,7 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
+    <title>Laravel & Catalog project</title>
     <link href="/home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="/home/js/jquery-1.11.0.min.js"></script>
@@ -17,8 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
     <script src="/home/js/simpleCart.min.js"> </script>
@@ -55,12 +48,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
-                        <div class="total">
-                            <span class="simpleCart_total"></span></div>
-                        <img src="/home/images/cart-1.png" alt="" />
+                    <a href="/login">
+                        Login
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="cart box_1">
+                    <a href="/register">
+                        Register
+                    </a>
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -71,9 +67,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="/"><h1>Homepage</h1></a>
+    <a href="/"><img src="/home/images/star.png" alt=""></a>
 </div>
 <!--start-logo-->
+@if(\Illuminate\Support\Facades\Auth::check() === true)
+    <div class="container">
+        <div class="roe">
+            <div class="col-xs-12 text-right text-info">
+                <a href="/user/dashboard/{{\Illuminate\Support\Facades\Auth::id()}}" class="btn btn-outline-primary mr-3">Админка</a>
+                <a href="/user/logout" class="btn btn-outline-danger">Выйти</a>
+                <a href="/user/deleteUser/{{\Illuminate\Support\Facades\Auth::id()}}" class="btn btn-outline-danger">Удалить пользователя</a>
+            </div>
+        </div>
+    </div>
+
+@endif
 <!--bottom-header-->
 @yield('header-bottom')
 

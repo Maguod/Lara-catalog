@@ -14,10 +14,25 @@ const mix = require('laravel-mix');
 // mix.js('resources/js/app.js', 'public/js')
 //    .sass('resources/sass/app.scss', 'public/css');
 
-mix.styles([
-    'resources/assets/front/css/bootstrap.css',
-    'resources/assets/front/css/flexslider.css',
-    'resources/assets/front/css/memenu.css',
-    'resources/assets/front/css/style.css',
+// mix
+//     .setPublicPath('/public/home')
+//     .styles([
+//     'resources/assets/front/css/bootstrap.css',
+//     'resources/assets/front/css/flexslider.css',
+//     'resources/assets/front/css/memenu.css',
+//
+// ], 'front.css');
 
-], 'public/css/front.css');
+mix.styles([
+       'resources/assets/user/css/bootstrap.css',
+       'resources/assets/user/css/mdb.css',
+       'resources/assets/user/css/modules/animations-extended.css',
+       'resources/assets/user/css/style.css',
+    ], 'public/user/css/user.css');
+
+mix.js([
+        'resources/assets/user/js/jquery-3.3.1.min.js',
+        'resources/assets/user/js/popper.min.js',
+        'resources/assets/user/js/bootstrap.min.js',
+        'resources/assets/user/js/mdb.min.js',
+    ], 'public/user/js/user.js');
