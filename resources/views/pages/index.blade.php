@@ -1,4 +1,4 @@
-@extends('layouts.layoutHome')
+@extends('pages.layout')
 
 @section('header-bottom')
     <div class="header-bottom">
@@ -10,7 +10,7 @@
                             <li class="active"><a href="/">Home</a></li>
 
                             @foreach($cats as $cat)
-                                <li class="grid"><a href="/category/{{$cat->id}}">{{$cat->title}}</a>
+                                <li class="grid"><a href="/categories/{{$cat->id}}">{{$cat->title}}</a>
                                 </li>
                             @endforeach
 
@@ -29,10 +29,20 @@
                     </div>
                 </div>
                 <div class="clearfix"> </div>
+                @if(session('message'))
+                    <div class="col-sm-12">
+                        <div class="alert alert-info">
+                            {{session('message')}}
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                @endif
             </div>
         </div>
     </div>
+
 @endsection
+
 @section('content')
     <div class="product">
         <div class="container">
@@ -42,7 +52,8 @@
                     <div class="col-md-3 product-left">
                         <div class="product-main simpleCart_shelfItem">
                             <a href="/single/{{$card->id}}" class="mask">
-                                <img class="img-responsive zoom-img" src="/{{$card->image}}" alt="{{$card->title}}"
+                                <img class="img-responsive zoom-img" src="{{$card->getImage()}}"
+                                     alt="{{$card->title}}"
                                 />
                             </a>
                             <div class="product-bottom">

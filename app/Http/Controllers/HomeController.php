@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Card;
 use App\Category;
+use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers;
@@ -28,24 +29,25 @@ class HomeController extends Controller
   public function category($id)
   {
     $cats = Category::all();
-    $mainCat = $this->category->find($id);
-    $cards = $this->card->where('category_id', $id)->paginate(4);
-    return view('category', ['cats' => $cats, 'cards' => $cards, 'mainCat' => $mainCat]);
+    $mainCat = Category::find($id);
+    $cards = Card::where('category_id', $id)->paginate(4);
+    return view('pages.categories', ['cats' => $cats, 'cards' => $cards, 'mainCat' => $mainCat]);
   }
   public function singleCard($id)
   {
-    $cats = $this->category::all();
-    $card = $this->card->find($id);
-    return view('single', ['cats' => $cats, 'card' => $card]);
+    $comments = Comment::where('card_id', $id )->where('status', 1)->get();
+    $cats = Category::all();
+    $card = Card::find($id);
+    return view('pages.single', ['cats' => $cats, 'card' => $card, 'comments' => $comments]);
   }
   
   public function loginForm()
   {
-    return view('login');
+    return view('pages.login');
   }
   public function registerForm()
   {
-    return view('register');
+    return view('pages.register');
   }
 
 }

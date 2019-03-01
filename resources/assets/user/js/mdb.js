@@ -2144,7 +2144,7 @@ defaults._set('bar', {
 
 	scales: {
 		xAxes: [{
-			type: 'category',
+			type: 'categories',
 
 			// Specific to Bar Controller
 			categoryPercentage: 0.8,
@@ -2179,7 +2179,7 @@ defaults._set('horizontalBar', {
 
 		yAxes: [{
 			position: 'left',
-			type: 'category',
+			type: 'categories',
 
 			// Specific to Horizontal Bar Controller
 			categoryPercentage: 0.8,
@@ -2251,7 +2251,7 @@ function computeMinSampleSize(scale, pixels) {
 }
 
 /**
- * Computes an "ideal" category based on the absolute bar thickness or, if undefined or null,
+ * Computes an "ideal" categories based on the absolute bar thickness or, if undefined or null,
  * uses the smallest interval (see computeMinSampleSize) that prevents bar overlapping. This
  * mode currently always generates bars equally sized (until we introduce scriptable options?).
  * @private
@@ -2266,7 +2266,7 @@ function computeFitCategoryTraits(index, ruler, options) {
 		size = ruler.min * options.categoryPercentage;
 		ratio = options.barPercentage;
 	} else {
-		// When bar thickness is enforced, category and bar percentages are ignored.
+		// When bar thickness is enforced, categories and bar percentages are ignored.
 		// Note(SB): we could add support for relative bar thickness (e.g. barThickness: '50%')
 		// and deprecate barPercentage since this value is ignored when thickness is absolute.
 		size = thickness * count;
@@ -2281,7 +2281,7 @@ function computeFitCategoryTraits(index, ruler, options) {
 }
 
 /**
- * Computes an "optimal" category that globally arranges bars side by side (no gap when
+ * Computes an "optimal" categories that globally arranges bars side by side (no gap when
  * percentage options are 1), based on the previous and following categories. This mode
  * generates bars with different widths when data are not evenly spaced.
  * @private
@@ -3108,7 +3108,7 @@ defaults._set('line', {
 
 	scales: {
 		xAxes: [{
-			type: 'category',
+			type: 'categories',
 			id: 'x-axis-0'
 		}],
 		yAxes: [{
@@ -3872,7 +3872,7 @@ defaults._set('scatter', {
 	scales: {
 		xAxes: [{
 			id: 'x-axis-1',    // need an ID so datasets can reference the scale
-			type: 'linear',    // scatter should not use a category axis
+			type: 'linear',    // scatter should not use a categories axis
 			position: 'bottom'
 		}],
 		yAxes: [{
@@ -4329,7 +4329,7 @@ module.exports = function(Chart) {
 			if (options.scales) {
 				items = items.concat(
 					(options.scales.xAxes || []).map(function(xAxisOptions) {
-						return {options: xAxisOptions, dtype: 'category', dposition: 'bottom'};
+						return {options: xAxisOptions, dtype: 'categories', dposition: 'bottom'};
 					}),
 					(options.scales.yAxes || []).map(function(yAxisOptions) {
 						return {options: yAxisOptions, dtype: 'linear', dposition: 'left'};
@@ -5549,7 +5549,7 @@ module.exports = function() {
 
 					for (i = 0; i < slen; ++i) {
 						scale = source[key][i];
-						type = helpers.valueOrDefault(scale.type, key === 'xAxes' ? 'category' : 'linear');
+						type = helpers.valueOrDefault(scale.type, key === 'xAxes' ? 'categories' : 'linear');
 
 						if (i >= target[key].length) {
 							target[key].push({});
@@ -12512,7 +12512,7 @@ var scaleService = require(34);
 
 module.exports = function() {
 
-	// Default config for a category scale
+	// Default config for a categories scale
 	var defaultConfig = {
 		position: 'bottom'
 	};
@@ -12638,7 +12638,7 @@ module.exports = function() {
 		}
 	});
 
-	scaleService.registerScaleType('category', DatasetScale, defaultConfig);
+	scaleService.registerScaleType('categories', DatasetScale, defaultConfig);
 };
 
 },{"33":33,"34":34}],55:[function(require,module,exports){

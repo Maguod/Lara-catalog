@@ -20,20 +20,23 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
+        'is_admin' => 1,
     ];
 });
 $factory->define(App\Card::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(2, true),
-        'content' => $faker->text(),
+        'content' => $faker->text(400),
         'slug' => $faker->slug(2),
-        'image' => $faker->image('upload', 240, 400, 'people'),
+        'category_id' => 2,
+        'image' => $faker->image('upload', 400, 400, '', false),
     ];
 });
 $factory->define(App\Category::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(2, true),
-        'description' => $faker->text(),
+        'description' => $faker->text(300),
         'slug' => $faker->slug(2),
+//        'user_id' => 1
     ];
 });

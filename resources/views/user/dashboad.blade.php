@@ -1,17 +1,18 @@
-@extends('layouts.layoutUser')
+@extends('user.layout')
 
 @section('content')
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
+
             <!--Grid row-->
             <div class="card-deck row wow fadeIn">
                     @if(count($cards) > 0)
                     @foreach($cards as $card)
 
-                        <div class="col-sm-6 col-md-3 mb-3">
+                        <div class="col-sm-6 col-md-4 mb-3">
                             <div class="view overlay">
-                                <img class="card-img-top" src="/{{$card->image}}" alt="{{$card->title}}">
+                                <img class="card-img-top" src="{{$card->getImage()}}" alt="{{$card->title}}">
 
                                     <div class="mask rgba-white-slight"></div>
                             </div>
@@ -19,8 +20,11 @@
                                 <h4 class="card-title">{{$card->title}}</h4>
                                 <!--Text-->
                                 <p class="card-text">{{$card->content}}</p>
-                                <a href="/user/edit/{{$card->id}}" class="btn purple-gradient mb-1">Edit</a>
-                                <a href="/user/delete/{{$card->id}}" class="mb-1 btn aqua-gradient">Delete</a>
+                                <div class="btn-box">
+                                    <a href="/user/card/edit/{{$card->id}}" class="btn blue-gradient mb-1">Edit</a>
+                                    <a href="/user/deleteCard/{{$card->id}}" class="mb-1 btn aqua-gradient">Delete</a>
+                                </div>
+
                             </div>
                         </div>
 

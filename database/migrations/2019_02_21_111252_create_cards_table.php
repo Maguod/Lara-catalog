@@ -18,10 +18,12 @@ class CreateCardsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('user_id')->default(1);
             $table->integer('category_id')->nullable();
             $table->integer('status')->default(0);
+            $table->integer('views')->default(0);
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
